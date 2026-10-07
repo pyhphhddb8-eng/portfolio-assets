@@ -83,8 +83,9 @@ const snimok = (page, imya, extra = {}) => page.screenshot({ path: SYROE + imya,
     await snimok(v, imya);
   };
   await snimok(v, 'dostavka-1-kartochki.png');
-  await k_razdelu('#checks', 'dostavka-2-proverki.png');
-  await k_razdelu('#sheet-light', 'dostavka-3-znachok.png');
+  // к заголовкам разделов витрины, чтобы заголовок был в кадре
+  await k_razdelu('h2.section:nth-of-type(1)', 'dostavka-2-proverki.png');
+  await k_razdelu('h2.section:nth-of-type(2)', 'dostavka-3-znachok.png');
   const t = await stranica(TEL, D, true);
   await t.waitForSelector('.chat-card');
   await t.waitForTimeout(800);
